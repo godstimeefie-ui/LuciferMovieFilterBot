@@ -3,17 +3,15 @@ from info import DATABASE_NAME, DATABASE_URI, IMDB, IMDB_TEMPLATE, MELCOW_NEW_US
 
 class Database:
     
-    def __init__(self, uri, database_name):
-        import os
+    def __init__(self, uri, database_name): import os
 
-uri = os.getenv("DATABASE_URI")
-print("DEBUG_URI:", repr(uri))  # shows exact value with quotes
-print("DEBUG_LENGTH:", len(uri) if uri else "EMPTY_NONE")
-if uri:
-    print("DEBUG_STARTS:", uri[:50])  # first 50 chars
-else:
-    print("DEBUG_WARNING: DATABASE_URI not found in env!")
-    
+        env_uri = os.getenv("DATABASE_URI")
+        print("DEBUG_URI:", repr(env_uri))
+        print("DEBUG_LENGTH:", len(env_uri) if env_uri else "EMPTY_NONE")
+        if env_uri:
+            print("DEBUG_STARTS:", env_uri[:50])
+        else:
+            print("DEBUG_WARNING: DATABASE_URI not found in env!") 
         self._client = motor.motor_asyncio.AsyncIOMotorClient(uri)
         self.db = self._client[database_name]
         self.col = self.db.users
