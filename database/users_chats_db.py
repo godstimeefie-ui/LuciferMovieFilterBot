@@ -1,10 +1,11 @@
 import motor.motor_asyncio
+import os
+
 from info import DATABASE_NAME, DATABASE_URI, IMDB, IMDB_TEMPLATE, MELCOW_NEW_USERS, P_TTI_SHOW_OFF, SINGLE_BUTTON, SPELL_CHECK_REPLY, PROTECT_CONTENT, AUTO_DELETE, AUTO_FFILTER, MAX_BTN
 
 class Database:
     
-    def __init__(self, uri, database_name): import os
-
+    def __init__(self, uri, database_name):
         env_uri = os.getenv("DATABASE_URI")
         print("DEBUG_URI:", repr(env_uri))
         print("DEBUG_LENGTH:", len(env_uri) if env_uri else "EMPTY_NONE")
